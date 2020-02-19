@@ -42,6 +42,7 @@ class Game:
         # game loop draw
         self.screen.fill(Black)
         self.all_sprites.draw(self.screen)
+        pg.draw.rect(self.screen, Red, pg.Rect(30, 30, 60, 60))
         # After *Drawing everything, flip displayet
         pg.display.flip()
 
