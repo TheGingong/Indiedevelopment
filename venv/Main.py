@@ -1,7 +1,6 @@
 import pygame as pg
 from Settings import *
-#yYESSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
-ewrqrnlfdggfggf
+sdnndfgnndsfgsdfgdsfgsdfgsdfg
 class Game:
     def __init__(self):
         # Kør spil vindue
