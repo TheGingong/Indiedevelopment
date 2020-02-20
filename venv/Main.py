@@ -1,0 +1,65 @@
+import pygame as pg
+from Settings import *
+
+class Game:
+    def __init__(self):
+        # Kør spil vindue
+        pg.init()
+        pg.mixer.init()
+        self.screen = pg.display.set_mode((Width, Height))
+        pg.display.set_caption(Titel)
+        self.clock = pg.time.Clock()
+
+        self.running = True
+
+    def new(self):
+        # Start et nyt spil
+        self.all_sprites = pg.sprite.Group()
+        self.run()
+
+    def run(self):
+        # Game loop
+        self.playing = True
+        while self.playing:
+            self.clock.tick(Fps)
+            self.event()
+            self.update()
+            self.draw()
+
+    def update(self):
+        # game loop update
+        self.all_sprites.update()
+
+    def event(self):
+        # game loop events
+        for event in pg.event.get():
+            if event.type == pg.QUIT:
+                if self.playing:
+                    self.playing = False
+                self.running = False
+
+    def draw(self):
+        # game loop draw
+        self.screen.fill(Black)
+        self.all_sprites.draw(self.screen)
+        pg.draw.rect(self.screen, Red, pg.Rect(30, 30, 60, 60))
+        # After *Drawing everything, flip displayet
+        pg.display.flip()
+
+    def show_start_screen(self):
+        #Vis start skærm
+        pass
+
+    def show_go_screen(self):
+        # vis game over skærm
+        pass
+
+
+
+g = Game()
+g.show_start_screen()
+while g.running:
+    g.new()
+    g.show_go_screen()
+
+pg.quit()
