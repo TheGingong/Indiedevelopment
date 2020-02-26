@@ -2,7 +2,7 @@ import pygame as pg
 import random
 from Settings import *
 from Sprites import *
-from Enemies import *
+
 
 class Game:
     def __init__(self):
@@ -20,9 +20,7 @@ class Game:
         self.all_sprites = pg.sprite.Group()
         #Spawner player
         self.player = Player()
-        #Spawner en enemy for ny
-        self.enemy = Enemy()
-        self.all_sprites.add(self.player, self.enemy)
+        self.all_sprites.add(self.player)
 
         self.run()
 

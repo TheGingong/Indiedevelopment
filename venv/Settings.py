@@ -1,6 +1,6 @@
 #game settings
-Width = 500
-Height = 400
+Width = 1200
+Height = 800
 PHeight = 45
 PWidth = 45
 Fps = 60
