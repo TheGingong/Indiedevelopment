@@ -1,5 +1,9 @@
 import pygame as pg
+import random
 from Settings import *
+from Sprites import *
+from Enemies import *
+
 class Game:
     def __init__(self):
         # Kør spil vindue
@@ -14,6 +18,12 @@ class Game:
     def new(self):
         # Start et nyt spil
         self.all_sprites = pg.sprite.Group()
+        #Spawner player
+        self.player = Player()
+        #Spawner en enemy for ny
+        self.enemy = Enemy()
+        self.all_sprites.add(self.player, self.enemy)
+
         self.run()
 
     def run(self):
@@ -37,13 +47,19 @@ class Game:
                     self.playing = False
                 self.running = False
 
+
     def draw(self):
         # game loop draw
         self.screen.fill(Black)
         self.all_sprites.draw(self.screen)
-        pg.draw.rect(self.screen, Red, pg.Rect(30, 30, 60, 60))
+
+
         # After *Drawing everything, flip displayet
         pg.display.flip()
+
+
+
+
 
     def show_start_screen(self):
         #Vis start skærm
@@ -52,7 +68,6 @@ class Game:
     def show_go_screen(self):
         # vis game over skærm
         pass
-
 
 
 g = Game()
