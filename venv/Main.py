@@ -17,14 +17,16 @@ while run:
             run = False
     keys = pg.key.get_pressed()
 
-    if keys[pg.K_LEFT]:
+    if keys[pg.K_LEFT] and x > vel:
         x -= vel
-    if keys[pg.K_RIGHT]:
+    if keys[pg.K_RIGHT] and x < Width - PWidth:
         x += vel
-    if keys[pg.K_UP]:
+    if keys[pg.K_UP] and y > vel:
         y -= vel
-    if keys[pg.K_DOWN]:
+    if keys[pg.K_DOWN] and y < Height - PHeight - vel:
         y += vel
+    if keys[pg.K_ESCAPE]:
+        run = False
 
     screen.fill(Black)
     pg.draw.rect(screen, Red, (x, y, PWidth, PHeight))
