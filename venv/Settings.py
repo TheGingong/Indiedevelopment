@@ -4,7 +4,7 @@ Height = 800
 PHeight = 45
 PWidth = 45
 Fps = 60
-vel = 4
+vel = 5
 Titel = ("MWDJ’s BowRain")
 
 
