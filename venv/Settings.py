@@ -1,12 +1,15 @@
 #game settings
 Width = 1200
 Height = 800
-PHeight = 45
-PWidth = 45
-Fps = 60
+PHeight = 64
+PWidth = 64
+Fps = 27
 vel = 30
 x = 50
 y = 50
+left = False
+right = False
+walkCount = 0
 Titel = ("MWDJ’s BowRain")
 
 
