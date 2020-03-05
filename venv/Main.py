@@ -35,7 +35,7 @@ def redrawGameWindow():
 
 run = True
 while run:
-    clock.tick(27)
+    clock.tick(Fps)
 
 
     for event in pg.event.get():
