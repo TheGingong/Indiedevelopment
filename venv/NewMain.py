@@ -41,11 +41,11 @@ while run:
 
     if keys[pg.K_SPACE]:
         if man.left:
-            facing = -1
+            facing = -1.5
         else:
-            facing = 1
+            facing = 1.5
 
-        if len(bullets) < 4  :
+        if len(bullets) < 1  :
             bullets.append(projectile(round(man.x + man.Pwidth //2), round(man.y + man.Pheight//2), 6, Black, facing))
 
     if keys[pg.K_LEFT] and man.x > man.vel:

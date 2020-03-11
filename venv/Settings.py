@@ -52,7 +52,7 @@ Width = 1200
 Height = 800
 Fps = 60
 vel = 10
-Titel = ("MWDJ’s BowRain")
+Titel = ("BowRain")
 
 #Farver
 White = (255,255,255)
