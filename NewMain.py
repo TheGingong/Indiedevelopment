@@ -14,6 +14,7 @@ clock = pg.time.Clock()
 
 
 
+
 #Der hvor vi opdatere vores draw funktioner
 def redrawGameWindow():
     screen.blit(bg, (0,0))
@@ -31,12 +32,14 @@ def redrawGameWindow():
 man = Player(390, 290, 64, 64)
 enemy = Enemy(0,0, 40, 40)
 
-
-
+pg.mixer.music.load('Spildemo3.mp3')
+pg.mixer.music.play(-1, 0, 0)
 bullets = []
 run = True
 while run:
     clock.tick(Fps)
+
+
 
     for event in pg.event.get():
         if event.type == pg.QUIT:
@@ -53,30 +56,34 @@ while run:
     keys = pg.key.get_pressed()
 
 
-
     #Karakterens gå funktion
     if keys[pg.K_LEFT] and man.x > man.vel:
         man.x -= man.vel
-        man.left = True
-        man.right = False
-        man.up = False
-        man.down = False
+        man.Left = True
+        man.Right = False
 
     if keys[pg.K_RIGHT] and man.x < Width - man.Pwidth - man.vel:
         man.x += man.vel
+        man.Right = True
+        man.Left = False
+
+    else:
+        man.Right = False
+        man.Left = False
+        man.walkCount = 0
+
 
     if keys[pg.K_DOWN] and man.y < Height - man.Pheight - man.vel:
         man.y += man.vel
-    if keys[pg.K_ESCAPE]:
-        run = False
-
-    elif keys[pg.K_UP] and man.y > man.vel:
+    if keys[pg.K_UP] and man.y > man.vel:
         man.y -= man.vel
 
 
-    else:
-        man.standing = True
-        man.walkCount = 0
+    if keys[pg.K_ESCAPE]:
+        run = False
+
+
+
 
 
 
@@ -93,6 +100,7 @@ while run:
         xspeeed = vecx / vecc
         yspeeed = vecy / vecc
         print(xspeeed, yspeeed)
+
 
         if len(bullets) < 1  :
             bullets.append(projectile(round(man.x + man.Pwidth //2), round(man.y + man.Pheight//2), 6, Black, xspeeed, yspeeed))
