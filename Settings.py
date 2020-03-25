@@ -18,26 +18,23 @@ class Player(object):
         self.up = False
         self.down = False
         self.walkCount = 0
-        self.standing = True
+
 
 
     def draw(self, screen):
         if self.walkCount + 1 >= 27:
             self.walkCount = 0
 
-        if not (self.standing):
+        if self.Left:
+            screen.blit(WalkLeft[self.walkCount // 3], (self.x, self.y))
+            self.walkCount += 1
 
-            if self.left:
-                screen.blit(walkLeft[self.walkCount//3], (self.x, self.y) )
-                self.walkCount += 1
-            elif self.right:
-                screen.blit(walkRight[self.walkCount // 3], (self.x, self.y) )
-                self.walkCount += 1
+        if self.Right:
+            screen.blit(WalkRight[self.walkCount // 3], (self.x, self.y))
+            self.walkCount += 1
+
         else:
-            if self.right:
-                screen.blit(walkRight[0], (self.x, self.y))
-            else:
-                screen.blit(walkLeft[0], (self.x, self.y))
+            screen.blit(char, (self.x,self.y))
 
 #En klasse for dine skud
 class projectile(object):
@@ -88,3 +85,12 @@ Black = (0,0,0)
 Red = (255,0,0)
 Green = (0,255,0)
 Blue = (0,0,255)
+
+
+
+
+
+
+# Ikke slet please :)
+# greater than >
+# less than <
