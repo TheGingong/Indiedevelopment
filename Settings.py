@@ -61,7 +61,7 @@ class Enemy(object):
     def __init__(self, x, y , Ewidth, Eheight):
         self.x = x
         self.y = y
-        self. Ewidth = Ewidth
+        self.Ewidth = Ewidth
         self.Eheight = Eheight
         self.vel = 3
         #self.xspeed = xspeed
@@ -88,11 +88,3 @@ Black = (0,0,0)
 Red = (255,0,0)
 Green = (0,255,0)
 Blue = (0,0,255)
-
-
-
-
-
-# Ikke slet please :)
-# greater than >
-# less than <
