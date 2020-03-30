@@ -29,7 +29,7 @@ class Player(object):
             screen.blit(WalkLeft[self.walkCount // 3], (self.x, self.y))
             self.walkCount += 1
 
-        if self.Right:
+        elif self.Right:
             screen.blit(WalkRight[self.walkCount // 3], (self.x, self.y))
             self.walkCount += 1
 

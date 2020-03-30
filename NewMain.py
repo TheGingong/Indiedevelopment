@@ -62,7 +62,7 @@ while run:
         man.Left = True
         man.Right = False
 
-    if keys[pg.K_RIGHT] and man.x < Width - man.Pwidth - man.vel:
+    elif keys[pg.K_RIGHT] and man.x < Width - man.Pwidth - man.vel:
         man.x += man.vel
         man.Right = True
         man.Left = False
