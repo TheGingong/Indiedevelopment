@@ -105,7 +105,21 @@ while run:
         if len(bullets) < 1  :
             bullets.append(projectile(round(man.x + man.Pwidth //2), round(man.y + man.Pheight//2), 6, Black, xspeeed, yspeeed))
 
-
+     epos = [enemy.x, enemy.y]
+    ex = epos[0]
+    ey = epos[1]
+    ppos = [man.x, man.y]
+    px = ppos[0]
+    py = ppos[1]
+    evecx = px - ex
+    evecy = py - ey
+    evecc = math.sqrt((evecx * evecx) + (evecy * evecy))
+    xspeed = evecx / evecc
+    yspeed = evecy / evecc
+    print(xspeed, yspeed)
+    enemy.x += xspeed
+    enemy.y += yspeed
+    
     redrawGameWindow()
 
 
