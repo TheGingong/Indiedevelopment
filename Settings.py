@@ -3,7 +3,7 @@ import pygame as pg
 from Sprites import *
 
 import math
-
+score = 0
 #En klasse for dig altså den person man styrer. Vi har brugt nogle sprites som ikke er vores for at prøve om det virker
 #Vi regner med at bruge vores egne sprites i fremtiden
 class Player(object):
@@ -86,15 +86,25 @@ class Enemy(object):
         self.Eheight = Eheight
         self.vel = 3
         self.hitbox = (self.x + 17, self.y + 11, 31, 57)
+        self.health = 3
+        self.visible = True
         #self.xspeed = xspeed
         #self.yspeed = yspeed
 
     def draw(self, screen):
-        screen.blit(char, (self.x, self.y))
-        #pg.draw.rect(screen, Black, (self.x, self.y, self.Ewidth, self.Eheight))
-        self.hitbox = (self.x + 17, self.y + 11, 31, 57)
-        pg.draw.rect(screen, (255, 0, 0), self.hitbox, 2)
+        if self.visible:
+            screen.blit(char, (self.x, self.y))
+            #pg.draw.rect(screen, Black, (self.x, self.y, self.Ewidth, self.Eheight))
+            self.hitbox = (self.x + 17, self.y + 11, 31, 57)
+            pg.draw.rect(screen, (255, 0, 0), self.hitbox, 2)
+            #Healthbar
+            pg.draw.rect(screen, (255,0,0), (self.hitbox[0] - 10, self.hitbox[1] - 20, 50, 10))
+            pg.draw.rect(screen, (0,128, 0), (self.hitbox[0] - 10, self.hitbox[1] - 20, 50 - ((50 / 4) * (3 - self.health)), 10))
 
     def hit(self):
+        if self.health > 0:
+            self.health -= 1
+        else:
+            self.visible = False
         print("Hit the enemy")
         pass
