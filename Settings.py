@@ -1,6 +1,7 @@
 #game settings
 import pygame as pg
 from Sprites import *
+
 import math
 
 #En klasse for dig altså den person man styrer. Vi har brugt nogle sprites som ikke er vores for at prøve om det virker
@@ -9,15 +10,15 @@ class Player(object):
     def __init__(self, x, y, Pwidth, Pheight):
         self.x = x
         self.y = y
-
         self.Pwidth = Pwidth
         self.Pheight = Pheight
         self.vel = 5
-        self.left = False
-        self.right = False
+        self.Left = False
+        self.Right = False
         self.up = False
         self.down = False
         self.walkCount = 0
+        self.hitbox = (self.x + 17, self.y + 11, 31, 57)
 
 
 
@@ -32,9 +33,11 @@ class Player(object):
         elif self.Right:
             screen.blit(WalkRight[self.walkCount // 3], (self.x, self.y))
             self.walkCount += 1
-
         else:
             screen.blit(char, (self.x,self.y))
+        #Så vi kan se vores hitbox
+        self.hitbox = (self.x + 17, self.y + 11, 31, 57)
+        pg.draw.rect(screen, (255,0,0), self.hitbox, 2)
 
 #En klasse for dine skud
 class projectile(object):
@@ -47,33 +50,20 @@ class projectile(object):
         self.yspeeed = yspeeed
 
     def draw(self, screen):
-        pg.draw.circle(screen, self.color, (self.x, self.y), self.radius)
+        pg.draw.circle(screen, self.color, (int(self.x), int(self.y)), self.radius)
 
     def update(self):
         self.x += self.xspeeed * 10
         self.y += self.yspeeed * 10
 
 #Vi er i gang med at lave en enemy class som så vil følge efter dig
-class Enemy(object):
-    def __init__(self, x, y , Ewidth, Eheight):
-        self.x = x
-        self.y = y
-        self.Ewidth = Ewidth
-        self.Eheight = Eheight
-        self.vel = 3
-        #self.xspeed = xspeed
-        #self.yspeed = yspeed
-
-    def draw(self, screen):
-        pg.draw.rect(screen, Black, (self.x, self.y, self.Ewidth, self.Eheight))
-
-    def update(self):
-        #self.x += self.xspeed
-        #self.y += self.yspeed
-        pass
 
 
-Width = 1200
+
+
+
+
+Width = 800
 Height = 800
 Fps = 60
 vel = 10
@@ -88,9 +78,23 @@ Blue = (0,0,255)
 
 
 
+class Enemy(object):
+    def __init__(self, x, y , Ewidth, Eheight):
+        self.x = x
+        self.y = y
+        self.Ewidth = Ewidth
+        self.Eheight = Eheight
+        self.vel = 3
+        self.hitbox = (self.x + 17, self.y + 11, 31, 57)
+        #self.xspeed = xspeed
+        #self.yspeed = yspeed
 
+    def draw(self, screen):
+        screen.blit(char, (self.x, self.y))
+        #pg.draw.rect(screen, Black, (self.x, self.y, self.Ewidth, self.Eheight))
+        self.hitbox = (self.x + 17, self.y + 11, 31, 57)
+        pg.draw.rect(screen, (255, 0, 0), self.hitbox, 2)
 
-
-# Ikke slet please :)
-# greater than >
-# less than <
+    def hit(self):
+        print("Hit the enemy")
+        pass
