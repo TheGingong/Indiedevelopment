@@ -2,6 +2,7 @@ import pygame as pg
 from Settings import *
 import math
 
+#Yeet
 
 pg.init()
 
@@ -17,6 +18,9 @@ clock = pg.time.Clock()
 #Der hvor vi opdatere vores draw funktioner
 def redrawGameWindow():
     screen.blit(bg, (0,0))
+    text = font.render('Score: ' + str(score), 1, (Black))
+    #Tegner vores score på skærmen(ret på x eller y hvis den ser dum ud)
+    screen.blit(text, (390, 100))
     man.draw(screen)
     enemy.draw(screen)
     for bullet in bullets:
@@ -25,6 +29,7 @@ def redrawGameWindow():
     pg.display.update()
 
 #MainLoop
+font = pg.font.SysFont('comicsans', 30, True)
 man = Player(390, 290, 64, 64)
 enemy = Enemy(100,100,40,40)
 bullets = []
@@ -45,6 +50,7 @@ while run:
         if bullet.y - bullet.radius < enemy.hitbox[1] + enemy.hitbox[3] and bullet.y + bullet.radius > enemy.hitbox[1]:
             if bullet.x + bullet.radius > enemy.hitbox[0] and bullet.x - bullet.radius < enemy.hitbox[0] + enemy.hitbox[2]:
                 enemy.hit()
+                score += 1
                 bullets.pop(bullets.index(bullet))
 
         if bullet.x < Width and bullet.x > 0 and bullet.y < Height and bullet.y > 0:
