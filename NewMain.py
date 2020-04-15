@@ -46,6 +46,8 @@ while run:
         if man.hitbox[1] < enemy.hitbox[1] + enemy.hitbox[3] and man.hitbox[1] + man.hitbox[3] > enemy.hitbox[1]:
             if man.hitbox[0] + man.hitbox[2] > enemy.hitbox[0] and man.hitbox[0] < enemy.hitbox[0] + enemy.hitbox[2]:
                 man.hit()
+                enemy.x = 10
+                enemy.y = 10
                 score -=5
 
 
@@ -67,10 +69,6 @@ while run:
 
         else:
             bullets.pop(bullets.index(bullet))
-
-
-
-
 
     #Karakterens gå funktion
     if keys[pg.K_LEFT] and man.x > man.vel:
@@ -97,11 +95,6 @@ while run:
 
     if keys[pg.K_ESCAPE]:
         run = False
-
-
-
-
-
 
     #Vores skyde funktion, som tager brug af nogle vektorer til at se hvor musen er og beregner hvor den skal skyde hen
     if event.type == pg.MOUSEBUTTONDOWN:
@@ -139,9 +132,5 @@ while run:
     enemy.x += xspeed
     enemy.y += yspeed
     redrawGameWindow()
-
-
-
-
 
 pg.quit()

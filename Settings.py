@@ -67,7 +67,7 @@ class Player(object):
         screen.blit(text, (Width / 2 - (text.get_width()/2), Height / 2))
         if self.health > 0:
             self.health -= 1
-        if self.health == 0:
+        if self.health <= 0:
             run = False
         pg.display.update()
 
