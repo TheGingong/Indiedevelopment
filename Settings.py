@@ -1,5 +1,5 @@
-Width = 800
-Height = 800
+Width = 1200
+Height = 840
 Fps = 60
 vel = 10
 Titel = ("MWDJ’s BowRain")
