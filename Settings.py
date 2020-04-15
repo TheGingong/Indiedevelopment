@@ -1,8 +1,23 @@
+Width = 800
+Height = 800
+Fps = 60
+vel = 10
+Titel = ("MWDJ’s BowRain")
+
+#Farver
+White = (255,255,255)
+Black = (0,0,0)
+Red = (255,0,0)
+Green = (0,255,0)
+Blue = (0,0,255)
+
 #game settings
+import time
 import pygame as pg
 from Sprites import *
-
+pg.init()
 import math
+screen = pg.display.set_mode((Width, Height))
 score = 0
 #En klasse for dig altså den person man styrer. Vi har brugt nogle sprites som ikke er vores for at prøve om det virker
 #Vi regner med at bruge vores egne sprites i fremtiden
@@ -18,6 +33,7 @@ class Player(object):
         self.up = False
         self.down = False
         self.walkCount = 0
+        self.health = 3
         self.hitbox = (self.x + 17, self.y + 11, 31, 57)
 
 
@@ -38,6 +54,28 @@ class Player(object):
         #Så vi kan se vores hitbox
         self.hitbox = (self.x + 17, self.y + 11, 31, 57)
         pg.draw.rect(screen, (255,0,0), self.hitbox, 2)
+        #Hp
+        pg.draw.rect(screen, (255, 0, 0), (self.hitbox[0] - 10, self.hitbox[1] - 20, 50, 10))
+        pg.draw.rect(screen, (0, 128, 0), (self.hitbox[0] - 10, self.hitbox[1] - 20, 50 - ((50 / 4) * (3 - self.health)), 10))
+
+    def hit(self):
+        self.x = 390
+        self.y = 290
+        self.walkCount = 0
+        font1 = pg.font.SysFont('comicsans', 100)
+        text = font1.render('-5', 1, Red)
+        screen.blit(text, (Width / 2 - (text.get_width()/2), Height / 2))
+        if self.health > 0:
+            self.health -= 1
+        if self.health == 0:
+            run = False
+        pg.display.update()
+
+        #for event in pg.event.get():
+            #if event.type == pg.QUIT():
+                #run = False
+            #else:
+
 
 #En klasse for dine skud
 class projectile(object):
@@ -63,18 +101,7 @@ class projectile(object):
 
 
 
-Width = 800
-Height = 800
-Fps = 60
-vel = 10
-Titel = ("MWDJ’s BowRain")
 
-#Farver
-White = (255,255,255)
-Black = (0,0,0)
-Red = (255,0,0)
-Green = (0,255,0)
-Blue = (0,0,255)
 
 
 
@@ -93,7 +120,7 @@ class Enemy(object):
 
     def draw(self, screen):
         if self.visible:
-            screen.blit(char, (self.x, self.y))
+            screen.blit(char_enemy, (self.x, self.y))
             #pg.draw.rect(screen, Black, (self.x, self.y, self.Ewidth, self.Eheight))
             self.hitbox = (self.x + 17, self.y + 11, 31, 57)
             pg.draw.rect(screen, (255, 0, 0), self.hitbox, 2)
