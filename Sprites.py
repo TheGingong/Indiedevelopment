@@ -9,7 +9,7 @@ WalkLeft = [pg.image.load('L1.png'), pg.image.load('L2.png'), pg.image.load('L3.
 #walkDown
 bg = pg.image.load('Arena.png')
 char_enemy = pg.image.load('standing_enemy.png')
-char = pg.image.load('standing.png')
+char = pg.image.load('standing_player.png')
 
 Music = pg.mixer.music.load('Spildemo3.mp3')
 #BulletSound = pg.mixer.Sound('bullet.mp3')
