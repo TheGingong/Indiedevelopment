@@ -120,10 +120,10 @@ class Enemy(object):
 
     def draw(self, screen):
         if self.visible:
-            screen.blit(enemy, (self.x, self.y))
+            screen.blit(char_enemy, (self.x, self.y))
             #pg.draw.rect(screen, Black, (self.x, self.y, self.Ewidth, self.Eheight))
             self.hitbox = (self.x + 17, self.y + 6, 31, 57)
-            pg.draw.rect(screen, (255, 0, 0), self.hitbox, 2)
+            #pg.draw.rect(screen, (255, 0, 0), self.hitbox, 2)
             #Healthbar
             pg.draw.rect(screen, (255,0,0), (self.hitbox[0] - 10, self.hitbox[1] - 20, 50, 10))
             pg.draw.rect(screen, (0,128, 0), (self.hitbox[0] - 10, self.hitbox[1] - 20, 50 - ((50 / 4) * (3 - self.health)), 10))

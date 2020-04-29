@@ -15,6 +15,6 @@ char = pg.image.load('standing_player.png')
 char_enemy = pg.image.load('standing_enemy.png')
 
 Music = pg.mixer.music.load('Spildemo3.mp3')
-BulletSound = pg.mixer.Sound('bullet.mp3')
-HitSound = pg.mixer.Sound('hit.mp3')
+#BulletSound = pg.mixer.Sound('bullet.mp3')
+#HitSound = pg.mixer.Sound('hit.mp3')
 
