@@ -1,19 +1,13 @@
 import pygame as pg
 from Settings import *
 import math
-
-#Yeet
+import random
 
 pg.init()
-
-
 
 pg.display.set_caption(Titel)
 
 clock = pg.time.Clock()
-
-
-
 
 #Der hvor vi opdatere vores draw funktioner
 def redrawGameWindow():
@@ -31,10 +25,8 @@ def redrawGameWindow():
 #MainLoop
 font = pg.font.SysFont('comicsans', 30, True)
 man = Player(390, 290, 64, 64)
-enemy = Enemy(100,100,40,40)
+enemy = Enemy(100, 100, 40, 40)
 bullets = []
-
-
 
 pg.mixer.music.play(-1, 0)
 run = True
@@ -46,8 +38,8 @@ while run:
         if man.hitbox[1] < enemy.hitbox[1] + enemy.hitbox[3] and man.hitbox[1] + man.hitbox[3] > enemy.hitbox[1]:
             if man.hitbox[0] + man.hitbox[2] > enemy.hitbox[0] and man.hitbox[0] < enemy.hitbox[0] + enemy.hitbox[2]:
                 man.hit()
-                enemy.x = 10
-                enemy.y = 10
+                enemy.x = random.randint(10, 1100)
+                enemy.y = random.randint(10, 800)
                 score -=5
 
 
@@ -71,10 +63,6 @@ while run:
 
         else:
             bullets.pop(bullets.index(bullet))
-
-
-
-
 
     #Karakterens gå funktion
     if keys[pg.K_LEFT] and man.x > man.vel:
@@ -102,11 +90,6 @@ while run:
     if keys[pg.K_ESCAPE]:
         run = False
 
-
-
-
-
-
     #Vores skyde funktion, som tager brug af nogle vektorer til at se hvor musen er og beregner hvor den skal skyde hen
     if event.type == pg.MOUSEBUTTONDOWN:
         #BulletSound.play()
@@ -127,6 +110,8 @@ while run:
         if len(bullets) < 1  :
             bullets.append(projectile(round(man.x + man.Pwidth //2), round(man.y + man.Pheight//2), 6, Black, xspeeed, yspeeed))
 
+    #rnd1 = random.randint(10, 1100)
+    #rnd2 = random.randint(10, 400)
 
     epos = [enemy.x, enemy.y]
     ex = epos[0]
@@ -140,12 +125,8 @@ while run:
     xspeed = evecx / evecc
     yspeed = evecy / evecc
 
-    enemy.x += xspeed
-    enemy.y += yspeed
+    enemy.x += xspeed * enemy.ekstra
+    enemy.y += yspeed * enemy.ekstra
     redrawGameWindow()
-
-
-
-
 
 pg.quit()

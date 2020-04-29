@@ -8,7 +8,6 @@ pg.init()
 WalkRight = [pg.image.load('Rightsideside_player.png'), pg.image.load('Rightsideside_player.png'), pg.image.load('Rightsideside_player.png'), pg.image.load('Rightsideside_player.png'), pg.image.load('Rightsideside_player.png'), pg.image.load('Rightsideside_player.png'), pg.image.load('Rightsideside_player.png'), pg.image.load('Rightsideside_player.png'), pg.image.load('Rightsideside_player.png')]
 WalkLeft = [pg.image.load('Leftside_player.png'), pg.image.load('Leftside_player.png'), pg.image.load('Leftside_player.png'), pg.image.load('Leftside_player.png'), pg.image.load('Leftside_player.png'), pg.image.load('Leftside_player.png'), pg.image.load('Leftside_player.png'), pg.image.load('Leftside_player.png'), pg.image.load('Leftside_player.png')]
 
-
 bg = pg.image.load('Arena.png')
 Menuq = pg.image.load('BowRain_main_menu.jpg')
 char = pg.image.load('standing_player.png')
