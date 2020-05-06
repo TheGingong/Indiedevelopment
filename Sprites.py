@@ -12,8 +12,9 @@ bg = pg.image.load('Arena.png')
 Menuq = pg.image.load('BowRain_main_menu.jpg')
 char = pg.image.load('standing_player.png')
 char_enemy = pg.image.load('standing_enemy.png')
+heartSprite = pg.image.load('Heart-health.png')
 
 Music = pg.mixer.music.load('Spildemo3.mp3')
-#BulletSound = pg.mixer.Sound('bullet.mp3')
-#HitSound = pg.mixer.Sound('hit.mp3')
+#BulletSound = pg.mixer.Sound('bullet.WAV')
+#HitSound = pg.mixer.Sound('hit.WAV')
 

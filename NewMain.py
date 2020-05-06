@@ -26,6 +26,7 @@ def redrawGameWindow():
 font = pg.font.SysFont('comicsans', 30, True)
 man = Player(390, 290, 64, 64)
 enemy = Enemy(100, 100, 40, 40)
+
 bullets = []
 
 pg.mixer.music.play(-1, 0)
@@ -34,7 +35,7 @@ while run:
     clock.tick(Fps)
     keys = pg.key.get_pressed()
 
-    if enemy.visible == True:
+    if enemy.visible == True & man.visible == True:
         if man.hitbox[1] < enemy.hitbox[1] + enemy.hitbox[3] and man.hitbox[1] + man.hitbox[3] > enemy.hitbox[1]:
             if man.hitbox[0] + man.hitbox[2] > enemy.hitbox[0] and man.hitbox[0] < enemy.hitbox[0] + enemy.hitbox[2]:
                 man.hit()

@@ -35,27 +35,44 @@ class Player(object):
         self.down = False
         self.walkCount = 0
         self.health = 3
+        self.visible = True
         self.hitbox = (self.x + 17, self.y + 11, 31, 57)
 
     def draw(self, screen):
-        if self.walkCount + 1 >= 27:
-            self.walkCount = 0
+        if self.visible == True:
+            if self.walkCount + 1 >= 27:
+                self.walkCount = 0
 
-        if self.Left:
-            screen.blit(WalkLeft[self.walkCount // 3], (self.x, self.y))
-            self.walkCount += 1
+            if self.Left:
+                screen.blit(WalkLeft[self.walkCount // 3], (self.x, self.y))
+                self.walkCount += 1
 
-        elif self.Right:
-            screen.blit(WalkRight[self.walkCount // 3], (self.x, self.y))
-            self.walkCount += 1
-        else:
-            screen.blit(char, (self.x,self.y))
-        #Så vi kan se vores hitbox
-        self.hitbox = (self.x + 17, self.y + 11, 31, 57)
-        #pg.draw.rect(screen, (255,0,0), self.hitbox, 2)
-        #Hp
-        pg.draw.rect(screen, (255, 0, 0), (self.hitbox[0] - 10, self.hitbox[1] - 20, 50, 10))
-        pg.draw.rect(screen, (0, 128, 0), (self.hitbox[0] - 10, self.hitbox[1] - 20, 50 - ((50 / 4) * (3 - self.health)), 10))
+            elif self.Right:
+                screen.blit(WalkRight[self.walkCount // 3], (self.x, self.y))
+                self.walkCount += 1
+            else:
+                screen.blit(char, (self.x,self.y))
+            #Så vi kan se vores hitbox
+            self.hitbox = (self.x + 17, self.y + 11, 31, 57)
+            #pg.draw.rect(screen, (255,0,0), self.hitbox, 2)
+            #Hp
+            #pg.draw.rect(screen, (255, 0, 0), (self.hitbox[0] - 10, self.hitbox[1] - 20, 50, 10))
+            #pg.draw.rect(screen, (0, 128, 0), (self.hitbox[0] - 10, self.hitbox[1] - 20, 50 - ((50 / 4) * (3 - self.health)), 10))
+        if self.health == 3:
+            screen.blit(heartSprite, (50, 10))
+            screen.blit(heartSprite, (110, 10))
+            screen.blit(heartSprite, (170, 10))
+
+        if self.health == 2:
+            screen.blit(heartSprite, (50, 10))
+            screen.blit(heartSprite, (110, 10))
+
+        if self.health == 1:
+            screen.blit(heartSprite, (50, 10))
+
+        if self.health == 0:
+            self.visible = False
+            #pg.quit()
 
     def hit(self):
         self.x = 390
@@ -66,9 +83,6 @@ class Player(object):
         screen.blit(text, (Width / 2 - (text.get_width()/2), Height / 2))
         if self.health >= 0:
             self.health -= 1
-        if self.health == 0:
-            Player.visible = False
-            run = False
         pg.display.update()
 
         #for event in pg.event.get():
