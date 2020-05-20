@@ -8,7 +8,6 @@ pg.init()
 pg.display.set_caption(Titel)
 
 clock = pg.time.Clock()
-
 #Der hvor vi opdatere vores draw funktioner
 def redrawGameWindow():
     screen.blit(bg, (0,0))
@@ -23,6 +22,7 @@ def redrawGameWindow():
     pg.display.update()
 
 #MainLoop
+
 font = pg.font.SysFont('comicsans', 30, True)
 man = Player(390, 290, 64, 64)
 enemy = Enemy(100, 100, 40, 40)
