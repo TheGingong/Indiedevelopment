@@ -58,9 +58,6 @@ while run:
                 if score >= 2:
                     score -= 2
 
-
-
-
     for event in pg.event.get():
         if event.type == pg.QUIT:
             run = False
@@ -68,10 +65,9 @@ while run:
         man.visible = False
         enemy.visible = False
 
-        if str(score) >= str(Highscore):
+        if str(score) > str(Highscore):
             with open ("highscore.txt", "w") as f:
                 f.write(str(score))
-
 
         if event.type == pg.MOUSEBUTTONDOWN:
             man.visible = True
