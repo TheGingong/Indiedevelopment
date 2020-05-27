@@ -14,7 +14,8 @@ char = pg.image.load('standing_player.png')
 char_enemy = pg.image.load('standing_enemy.png')
 heartSprite = pg.image.load('Heart-health.png')
 
-Music = pg.mixer.music.load('Spildemo3.mp3')
+Music = pg.mixer.music.load('SpilMusik.mp3')
 #BulletSound = pg.mixer.Sound('bullet.WAV')
 #HitSound = pg.mixer.Sound('hit.WAV')
 
+GameOverDemo = pg.image.load('GameOverDemo.jpg')
