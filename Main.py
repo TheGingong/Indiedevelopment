@@ -23,10 +23,10 @@ def redrawGameWindow():
     else:
         screen.blit(GameOver, (0,0))
     text = font.render('Score: ' + str(score), 1, (Black))
-    HStext = font.render('Highscore: ' + str(Highscore), 1, (Black))
+    HStext = font.render('Highscore: ' + str(Highscore), 1, (Dark_green))
     #Tegner vores score på skærmen(ret på x eller y hvis den ser dum ud)
-    screen.blit(text, (390, 100))
-    screen.blit(HStext, (390, 200))
+    screen.blit(text, (551, 50))
+    screen.blit(HStext, (500, 20))
     man.draw(screen)
     enemy.draw(screen)
     for bullet in bullets:
@@ -82,9 +82,6 @@ while run:
             score = 0
             enemy.ekstra = 1.0
 
-        #screen.blit(Menuqmendødligenu, (100,100))
-
-
     if man.health == 0:
         dead = True
 
@@ -102,10 +99,6 @@ while run:
 
         else:
             bullets.pop(bullets.index(bullet))
-
-
-
-
 
     #Karakterens gå funktion
     if keys[pg.K_LEFT] and man.x > man.vel:
@@ -132,10 +125,6 @@ while run:
 
     if keys[pg.K_ESCAPE]:
         run = False
-
-
-
-
 
 
     #Vores skyde funktion, som tager brug af nogle vektorer til at se hvor musen er og beregner hvor den skal skyde hen
