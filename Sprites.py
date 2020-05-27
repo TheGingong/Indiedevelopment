@@ -17,7 +17,7 @@ GameOver = pg.image.load('GameOver.png')
 
 
 Music = pg.mixer.music.load('SpilMusik.mp3')
-BulletSound = pg.mixer.Sound('bullet.WAV')
-HitSound = pg.mixer.Sound('hit.WAV')
+BulletSound = pg.mixer.Sound('bullet.wav')
+HitSound = pg.mixer.Sound('hit.wav')
 
 
