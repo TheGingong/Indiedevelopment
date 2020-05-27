@@ -89,7 +89,7 @@ while run:
         if enemy.visible == True:
             if bullet.y - bullet.radius < enemy.hitbox[1] + enemy.hitbox[3] and bullet.y + bullet.radius > enemy.hitbox[1]:
                 if bullet.x + bullet.radius > enemy.hitbox[0] and bullet.x - bullet.radius < enemy.hitbox[0] + enemy.hitbox[2]:
-                    #HitSound.play()
+                    HitSound.play()
                     enemy.hit()
                     score += 1
                     bullets.pop(bullets.index(bullet))
@@ -129,7 +129,7 @@ while run:
 
     #Vores skyde funktion, som tager brug af nogle vektorer til at se hvor musen er og beregner hvor den skal skyde hen
     if event.type == pg.MOUSEBUTTONDOWN:
-        #BulletSound.play()
+        BulletSound.play()
         mpos = pg.mouse.get_pos()
         mx, my = pg.mouse.get_pos()
         ppos = [man.x, man.y]

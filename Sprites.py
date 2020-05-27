@@ -11,8 +11,5 @@ char_enemy = pg.image.load('standing_enemy.png')
 heartSprite = pg.image.load('Heart-health.png')
 GameOver = pg.image.load('GameOver.png')
 Music = pg.mixer.music.load('SpilMusik.mp3')
-#BulletSound = pg.mixer.Sound('bullet.mp3')
-#HitSound = pg.mixer.Sound('hit.mp3')
-
-
-
+BulletSound = pg.mixer.Sound('bullet.ogg')
+HitSound = pg.mixer.Sound('hit.ogg')
