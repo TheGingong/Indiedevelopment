@@ -25,7 +25,7 @@ def redrawGameWindow():
     if dead == False:
         screen.blit(bg, (0,0))
     else:
-        screen.blit(GameOverDemo, (0,0))
+        screen.blit(GameOver, (0,0))
     text = font.render('Score: ' + str(score), 1, (Black))
     HStext = font.render('Highscore: ' + str(Highscore), 1, (Black))
     #Tegner vores score på skærmen(ret på x eller y hvis den ser dum ud)
