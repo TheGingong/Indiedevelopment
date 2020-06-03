@@ -101,12 +101,12 @@ while run:
             bullets.pop(bullets.index(bullet))
 
     #Karakterens gå funktion
-    if keys[pg.K_LEFT] and man.x > man.vel:
+    if keys[pg.K_LEFT] and man.x > 25:
         man.x -= man.vel
         man.Left = True
         man.Right = False
 
-    elif keys[pg.K_RIGHT] and man.x < Width - man.Pwidth - man.vel:
+    elif keys[pg.K_RIGHT] and man.x < Width - man.Pwidth - 25:
         man.x += man.vel
         man.Right = True
         man.Left = False
@@ -114,10 +114,10 @@ while run:
     else:
         man.Right = False
         man.Left = False
-        man.walkCount = 0
+        #man.walkCount = 0
 
 
-    if keys[pg.K_DOWN] and man.y < Height - man.Pheight - man.vel:
+    if keys[pg.K_DOWN] and man.y < Height - man.Pheight - 40:
         man.y += man.vel
     if keys[pg.K_UP] and man.y > man.vel:
         man.y -= man.vel
@@ -150,6 +150,7 @@ while run:
     #rnd1 = random.randint(10, 1100)
     #rnd2 = random.randint(10, 400)
 
+    # Vi bruger mega sejt matematik for at få en x,y værdi på -1 til 1 og så bruger vi det til at opdatere deres x,y værdi hele tiden
     epos = [enemy.x, enemy.y]
     ex = epos[0]
     ey = epos[1]
