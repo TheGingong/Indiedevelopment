@@ -59,6 +59,11 @@ while run:
                 #if score >= 2:
                     #score -= 2
 
+    if ShootLoop > 0:
+        ShootLoop += 1
+    if ShootLoop > 30:
+        ShootLoop = 0
+
     for event in pg.event.get():
         if event.type == pg.QUIT:
             run = False
@@ -103,12 +108,12 @@ while run:
             bullets.pop(bullets.index(bullet))
 
     #Karakterens gå funktion
-    if keys[pg.K_LEFT] and man.x > 25:
+    if keys[pg.K_a] and man.x > 25:
         man.x -= man.vel
         man.Left = True
         man.Right = False
 
-    elif keys[pg.K_RIGHT] and man.x < Width - man.Pwidth - 25:
+    elif keys[pg.K_d] and man.x < Width - man.Pwidth - 25:
         man.x += man.vel
         man.Right = True
         man.Left = False
@@ -119,9 +124,9 @@ while run:
         #man.walkCount = 0
 
 
-    if keys[pg.K_DOWN] and man.y < Height - man.Pheight - 40:
+    if keys[pg.K_s] and man.y < Height - man.Pheight - 40:
         man.y += man.vel
-    if keys[pg.K_UP] and man.y > man.vel:
+    if keys[pg.K_w] and man.y > man.vel:
         man.y -= man.vel
 
 
@@ -130,8 +135,8 @@ while run:
 
 
     #Vores skyde funktion, som tager brug af nogle vektorer til at se hvor musen er og beregner hvor den skal skyde hen
-    if event.type == pg.MOUSEBUTTONDOWN:
-        BulletSound.play()
+    if event.type == pg.MOUSEBUTTONDOWN and ShootLoop == 0:
+
         mpos = pg.mouse.get_pos()
         mx, my = pg.mouse.get_pos()
         ppos = [man.x, man.y]
@@ -142,13 +147,15 @@ while run:
         vecc = math.sqrt((vecx * vecx) + (vecy * vecy))
         xspeeed = vecx / vecc
         yspeeed = vecy / vecc
-        print("Bullet: ",xspeeed, yspeeed)
-        print("Enemy: ", xspeed, yspeed)
+        #print("Bullet: ",xspeeed, yspeeed)
+        #print("Enemy: ", xspeed, yspeed)
 
 
-        if len(bullets) < 1  :
+        if len(bullets) < 10  :
             bullets.append(projectile(round(man.x + man.Pwidth //2), round(man.y + man.Pheight//2), 6, Black, xspeeed, yspeeed))
+            BulletSound.play()
 
+        ShootLoop = 1
     #rnd1 = random.randint(10, 1100)
     #rnd2 = random.randint(10, 400)
 
