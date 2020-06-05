@@ -61,7 +61,7 @@ while run:
 
     if ShootLoop > 0:
         ShootLoop += 1
-    if ShootLoop > 30:
+    if ShootLoop > 20:
         ShootLoop = 0
 
     for event in pg.event.get():
