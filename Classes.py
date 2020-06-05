@@ -137,7 +137,7 @@ class Enemy(object):
             self.health = 1
             self.score += 1
             self.hpbar = 1
-        print("Hit the enemy")
+        #print("Hit the enemy")
         pass
 
     def BossBattle(self):
