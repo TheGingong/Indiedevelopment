@@ -22,7 +22,7 @@ def redrawGameWindow():
         screen.blit(bg, (0,0))
     else:
         screen.blit(GameOver, (0,0))
-    text = font.render('Score: ' + str(score), 1, (Black))
+    text = font.render('Score: ' + str(enemy.score), 1, (Black))
     HStext = font.render('Highscore: ' + str(Highscore), 1, (Dark_green))
     #Tegner vores score på skærmen(ret på x eller y hvis den ser dum ud)
     screen.blit(text, (551, 50))
@@ -55,8 +55,9 @@ while run:
                 man.hit()
                 enemy.x = random.randint(10, 1100)
                 enemy.y = random.randint(10, 800)
-                if score >= 2:
-                    score -= 2
+                # Da vi har en boss giver det ikke mening at have dette
+                #if score >= 2:
+                    #score -= 2
 
     for event in pg.event.get():
         if event.type == pg.QUIT:
@@ -65,9 +66,9 @@ while run:
         man.visible = False
         enemy.visible = False
 
-        if str(score) > str(Highscore):
+        if str(enemy.score) >= str(Highscore):
             with open ("highscore.txt", "w") as f:
-                f.write(str(score))
+                f.write(str(enemy.score))
 
         if event.type == pg.MOUSEBUTTONDOWN:
             man.visible = True
@@ -78,8 +79,9 @@ while run:
             man.x = 390
             man.y = 290
             man.health = 3
-            enemy.health = 3
-            score = 0
+            enemy.health = 1
+            enemy.hpbar = 1
+            enemy.score = 0
             enemy.ekstra = 1.0
 
     if man.health == 0:
@@ -91,7 +93,7 @@ while run:
                 if bullet.x + bullet.radius > enemy.hitbox[0] and bullet.x - bullet.radius < enemy.hitbox[0] + enemy.hitbox[2]:
                     HitSound.play()
                     enemy.hit()
-                    score += 1
+                    #score += 1
                     bullets.pop(bullets.index(bullet))
         # Dette har vi så skuddene forsvinder når de kommer ud af banen så der ikke er 15 milliarder skud der bare flyver omkring
         if bullet.x < Width and bullet.x > 0 and bullet.y < Height and bullet.y > 0:
@@ -150,7 +152,7 @@ while run:
     #rnd1 = random.randint(10, 1100)
     #rnd2 = random.randint(10, 400)
 
-    # Vi bruger mega sejt matematik for at få en x,y værdi på -1 til 1 og så bruger vi det til at opdatere deres x,y værdi hele tiden
+    # Vi bruger mega sejt matematik for at få en x,y værdi på -1 til 1 og så bruger vi det til at opdatere enemy position x,y værdi hele tiden
     epos = [enemy.x, enemy.y]
     ex = epos[0]
     ey = epos[1]
