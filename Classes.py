@@ -2,6 +2,7 @@ Width = 1200
 Height = 840
 Fps = 60
 vel = 10
+ShootLoop = 0
 Titel = ("MWDJ’s BowRain")
 
 
