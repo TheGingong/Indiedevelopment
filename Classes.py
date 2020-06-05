@@ -21,7 +21,7 @@ from Sprites import *
 pg.init()
 import math
 screen = pg.display.set_mode((Width, Height))
-score = 0
+
 #En klasse for dig altså den person man styrer. Vi har brugt nogle sprites som ikke er vores for at prøve om det virker
 #Vi regner med at bruge vores egne sprites i fremtiden
 class Player(object):
@@ -78,8 +78,9 @@ class Player(object):
         self.y = 290
         self.walkCount = 0
         font1 = pg.font.SysFont('comicsans', 100)
-        text = font1.render('-2', 1, Red)
-        screen.blit(text, (Width / 2 - (text.get_width()/2), Height / 2))
+        # Da vi laver en boss giver det ikke mening at gave minus score
+        #text = font1.render('-2', 1, Red)
+        #screen.blit(text, (Width / 2 - (text.get_width()/2), Height / 2))
         if self.health >= 0:
             self.health -= 1
         if self.health == 0:
@@ -115,9 +116,11 @@ class Enemy(object):
         self.Eheight = Eheight
         self.vel = 3
         self.hitbox = (self.x + 17, self.y + 11, 31, 57)
-        self.health = 3
+        self.health = 1
         self.visible = True
         self.ekstra = 1.0
+        self.score = 0
+        self.hpbar = 1
 
     def draw(self, screen):
         if self.visible:
@@ -125,17 +128,23 @@ class Enemy(object):
             self.hitbox = (self.x + 17, self.y + 6, 31, 57)
             #Healthbar
             pg.draw.rect(screen, (255,0,0), (self.hitbox[0] - 10, self.hitbox[1] - 20, 50, 10))
-            pg.draw.rect(screen, (0,128, 0), (self.hitbox[0] - 10, self.hitbox[1] - 20, 50 - ((50 / 4) * (3 - self.health)), 10))
+            pg.draw.rect(screen, (0, 128, 0), (self.hitbox[0] - 10, self.hitbox[1] - 20, 50 / self.hpbar, 10))
 
     def hit(self):
         self.ekstra += 0.1
         if self.health > 0:
             self.health -= 1
+            self.hpbar += 1
         else:
             self.visible = False
             self.visible = True
             self.x = random.randint(10, 1100)
             self.y = random.randint(10, 800)
-            self.health = 3
+            self.health = 1
+            self.score += 1
+            self.hpbar = 1
         print("Hit the enemy")
+        pass
+
+    def BossBattle(self):
         pass
