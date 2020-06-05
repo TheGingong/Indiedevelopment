@@ -139,6 +139,3 @@ class Enemy(object):
             self.hpbar = 1
         #print("Hit the enemy")
         pass
-
-    def BossBattle(self):
-        pass

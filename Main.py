@@ -34,7 +34,7 @@ def redrawGameWindow():
 
     pg.display.update()
 
-#MainLoop
+
 font = pg.font.SysFont('comicsans', 30, True)
 man = Player(390, 290, 64, 64)
 enemy = Enemy(100, 100, 40, 40)
@@ -45,6 +45,7 @@ bullets = []
 pg.mixer.music.play(-1, 0)
 dead = False
 run = True
+#MainLoop
 while run:
     clock.tick(Fps)
     keys = pg.key.get_pressed()
@@ -55,9 +56,7 @@ while run:
                 man.hit()
                 enemy.x = random.randint(10, 1100)
                 enemy.y = random.randint(10, 800)
-                # Da vi har en boss giver det ikke mening at have dette
-                #if score >= 2:
-                    #score -= 2
+
 
     if ShootLoop > 0:
         ShootLoop += 1
@@ -147,7 +146,7 @@ while run:
         vecc = math.sqrt((vecx * vecx) + (vecy * vecy))
         xspeeed = vecx / vecc
         yspeeed = vecy / vecc
-        #print("Bullet: ",xspeeed, yspeeed)
+        #print("Bullet: ",xspeeed, yspeeed)  (Dette brugte vi til at se om vores skud gik den rigtige retning)
         #print("Enemy: ", xspeed, yspeed)
 
 
