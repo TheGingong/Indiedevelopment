@@ -78,15 +78,8 @@ class Player(object):
         self.x = 390
         self.y = 290
         self.walkCount = 0
-        font1 = pg.font.SysFont('comicsans', 100)
-        # Da vi laver en boss giver det ikke mening at gave minus score
-        #text = font1.render('-2', 1, Red)
-        #screen.blit(text, (Width / 2 - (text.get_width()/2), Height / 2))
         if self.health >= 0:
             self.health -= 1
-        if self.health == 0:
-            Player.visible = False
-            run = False
         pg.display.update()
 
 
