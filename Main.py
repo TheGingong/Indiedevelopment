@@ -170,6 +170,7 @@ while run:
     ppos = [man.x, man.y]
     px = ppos[0]
     py = ppos[1]
+    #Sørger for at enemy følger efter spilleren
     evecx = px - ex
     evecy = py - ey
     evecc = math.sqrt((evecx * evecx) + (evecy * evecy))
