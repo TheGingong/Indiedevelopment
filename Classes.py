@@ -73,7 +73,7 @@ class Player(object):
 
             if self.health == 0:
                 self.visible = False
-
+#Hit funktionen der bliver kørt når spilleren bliver ramt af fjenden
     def hit(self):
         self.x = 390
         self.y = 290
@@ -123,6 +123,7 @@ class Enemy(object):
             pg.draw.rect(screen, (255,0,0), (self.hitbox[0] - 10, self.hitbox[1] - 20, 50, 10))
             pg.draw.rect(screen, (0, 128, 0), (self.hitbox[0] - 10, self.hitbox[1] - 20, 50 / self.hpbar, 10))
 
+#Funktionen som bliver kørt når spillerens skud rammer fjenden
     def hit(self):
         self.ekstra += 0.1
         if self.health > 0:
