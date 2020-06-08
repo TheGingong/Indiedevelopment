@@ -1,3 +1,4 @@
+#Globale variabler
 Width = 1200
 Height = 840
 Fps = 60
@@ -14,7 +15,7 @@ Green = (0,255,0)
 Dark_green = (0,100,0)
 Blue = (0,0,255)
 
-#game settings
+#game settings implementation
 import time
 import pygame as pg
 import random
@@ -23,8 +24,7 @@ pg.init()
 import math
 screen = pg.display.set_mode((Width, Height))
 
-#En klasse for dig altså den person man styrer. Vi har brugt nogle sprites som ikke er vores for at prøve om det virker
-#Vi regner med at bruge vores egne sprites i fremtiden
+#En klasse for spilleren hvor vi definere x, y, velocity, health, walkcount, hitbox, mm.
 class Player(object):
     def __init__(self, x, y, Pwidth, Pheight):
         self.x = x
@@ -41,7 +41,7 @@ class Player(object):
         self.visible = True
         self.hitbox = (self.x + 17, self.y + 11, 31, 57)
 
-
+#Draw funktion for player hvilket sætter standard værdier for spilleren som health, og movement.
     def draw(self, screen):
         if self.visible == True:
             if self.walkCount + 1 >= 27:
@@ -101,7 +101,6 @@ class projectile(object):
         self.y += self.yspeeed * 10
 
 #Vi er i gang med at lave en enemy class som så vil følge efter dig
-
 class Enemy(object):
     def __init__(self, x, y , Ewidth, Eheight):
         self.x = x

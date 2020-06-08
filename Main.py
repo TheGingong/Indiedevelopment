@@ -20,13 +20,16 @@ def redrawGameWindow():
     Highscore = Readhighscore.read()
     if dead == False:
         screen.blit(bg, (0,0))
+#Hvis spilleren er død, vil vi vise GAME OVER skærmen og de har mulighed for at starte spillet igen.
     else:
         screen.blit(GameOver, (0,0))
     text = font.render('Score: ' + str(enemy.score), 1, (Black))
     HStext = font.render('Highscore: ' + str(Highscore), 1, (Dark_green))
-    #Tegner vores score på skærmen(ret på x eller y hvis den ser dum ud)
+
+#Tegner vores score på skærmen(ret på x eller y hvis den ser dum ud)
     screen.blit(text, (551, 50))
     screen.blit(HStext, (500, 20))
+#Sætter player og enemy tilbage på skærmen i voers draw funktion og giver standard værdier.
     man.draw(screen)
     enemy.draw(screen)
     for bullet in bullets:
@@ -34,7 +37,7 @@ def redrawGameWindow():
 
     pg.display.update()
 
-
+#Her sætter vi vores variabler, som hvor vores enemy og play skal spawne på skærmen
 font = pg.font.SysFont('comicsans', 30, True)
 man = Player(390, 290, 64, 64)
 enemy = Enemy(100, 100, 40, 40)
@@ -45,11 +48,12 @@ bullets = []
 pg.mixer.music.play(-1, 0)
 dead = False
 run = True
-#MainLoop
+#MainLoop hvor vores spil kører i mens run = True
 while run:
     clock.tick(Fps)
     keys = pg.key.get_pressed()
 
+#Tjekker om enemy er tilstede på skærmen. Derefter tegner den en hitbox rundt om karakteren, og spawner den et tilfældigt sted på skærmen
     if enemy.visible == True:
         if man.hitbox[1] < enemy.hitbox[1] + enemy.hitbox[3] and man.hitbox[1] + man.hitbox[3] > enemy.hitbox[1]:
             if man.hitbox[0] + man.hitbox[2] > enemy.hitbox[0] and man.hitbox[0] < enemy.hitbox[0] + enemy.hitbox[2]:
@@ -57,7 +61,7 @@ while run:
                 enemy.x = random.randint(10, 1100)
                 enemy.y = random.randint(10, 800)
 
-
+#En timer som sørger for en cooldown i skyde mekanismen
     if ShootLoop > 0:
         ShootLoop += 1
     if ShootLoop > 20:
@@ -66,6 +70,7 @@ while run:
     for event in pg.event.get():
         if event.type == pg.QUIT:
             run = False
+#Tjekker om spilleren er død. Hvis han er så fjern både enemy og spiller
     if dead:
         man.visible = False
         enemy.visible = False
